@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardUseCompatPadding="true"
+        app:cardCornerRadius="10dp"
+        android:id="@+id/CardView"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="139dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageview"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+
+                    android:src="@drawable/download">
+
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:id="@+id/message_headtext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:maxLines="1"
+                        android:textColor="#00838f"
+                        android:text="this_is_headline_part_which_is_bolt"
+                        android:textSize="16sp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+
+                        android:id="@+id/message_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:text="in_academic_terms_a_text_is_anything_that_conveys_a_set_of_meanings_to_the_person_who_examines_it_you_might_have_thought_that_texts_were_limited_to_written_materials_such_as_books_magazines_newspapers_and_zines_an_informal_term_for_magazine_that_refers_especially_to_fanzines_and_webzines"
+                        android:textSize="14sp">
+
+                    </TextView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="15dp"
+                        >
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/like">
+
+                        </ImageView>
+
+                        <TextView
+
+                            android:id="@+id/likes_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="10dp"
+                            android:text="100 Likes "
+                            android:textColor="#FA2E95AF"
+                            android:layout_marginTop="5dp"
+                            >
+
+                        </TextView>
+
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:paddingBottom="0dp"
+                            android:scaleType="centerCrop"
+                            android:layout_marginTop="5dp"
+
+                            android:src="@drawable/comment">
+
+                        </ImageView>
+
+                        <TextView
+
+                            android:id="@+id/comment_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:text="100 Comments"
+                            android:textColor="#FA2E95AF"
+                            android:layout_marginTop="5dp"
+                            >
+                        </TextView>
+                        <ImageButton
+                            android:id="@+id/delete_confession"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="centerCrop"
+                            android:padding="0dp"
+                            android:src="@drawable/delete_icon"
+                            android:contentDescription="TODO">
+
+                        </ImageButton>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/confession_like"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo">
+
+                </ImageButton>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Like">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/ID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="#7DACDCE5"
+                    android:hint="leave_comment"
+                    android:padding="5dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp">
+
+                </EditText>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</RelativeLayout>

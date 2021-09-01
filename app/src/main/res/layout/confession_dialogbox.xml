@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Confession Title"
+            android:paddingStart="7dp"
+            android:textColor="#00838f"
+            android:textSize="16sp"
+            android:paddingLeft="7dp" />
+
+        <EditText
+            android:id="@+id/confessionHeading_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:hint="Confession TItle"
+            android:textAlignment="textStart"
+            android:padding="7dp"
+            android:background="#f1f3f6"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:gravity="start" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/confessionImage_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#00838f"
+                android:text="select image"
+
+                >
+
+            </Button>
+
+            <TextView
+                android:id="@+id/confessionImage_path"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:background="#f1f3f6"
+                android:padding="9dp"
+                android:gravity="center_vertical"
+
+                android:text="No file Choosen">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:text="Confession"
+            android:paddingStart="7dp"
+            android:textColor="#00838f"
+            android:textSize="16sp"
+            android:paddingLeft="7dp" />
+
+        <EditText
+            android:id="@+id/confessionMessage_text"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/what_are_you_confessing"
+            android:textAlignment="textStart"
+            android:padding="7dp"
+            android:background="#f1f3f6"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:gravity="start" />
+
+        <Button
+
+            android:id="@+id/confessionSubmit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="#00838f"
+            android:text="@string/confess" />
+    </LinearLayout>
+</LinearLayout>

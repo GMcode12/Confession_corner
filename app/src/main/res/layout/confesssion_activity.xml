@@ -18,24 +18,16 @@
 
         </ImageView>
 
-        <TextView
-            android:id="@+id/head"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"
-            android:text="This is heading"
-            android:textSize="18dp">
 
-        </TextView>
 
        <TextView
+
            android:id="@+id/message_ofActivity"
            android:layout_width="match_parent"
            android:paddingStart="15dp"
            android:maxLines="10"
            android:layout_height="wrap_content"
-           android:layout_marginTop="8dp"
+           android:layout_marginTop="15dp"
            android:text="this is dummy message text this is dummy  this  this is dummy message text this is dummy message text is dummy  this is dummy message text message textmessage text">
 
        </TextView>

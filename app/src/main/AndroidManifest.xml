@@ -19,8 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".clickActivity">
+        <activity
 
+            android:name=".clickActivity">
+        </activity>
+        <activity android:name=".own_confessionClickactivity">
 
         </activity>
     </application>

@@ -37,8 +37,8 @@ public class MyconfessionFragment extends Fragment {
     String URL = "https://putatoetest-k3snqinenq-uc.a.run.app/v1/api/showPersonalConfessionsAndComment";
     GsonBuilder builder = new GsonBuilder();
     Gson gson = builder.create();
-    MyAdapter adapter;
-    ArrayList<Confession_Pojo> api_data;
+    MyownAdapter adapter;
+    ArrayList<Myconfession_pojo> api_data;
     RequestQueue requestQueue;
     RecyclerView recyclerView;
 
@@ -50,7 +50,7 @@ public class MyconfessionFragment extends Fragment {
         recyclerView = v.findViewById(R.id.recyclerViewofconfessions);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        api_data = new ArrayList<>();
+        api_data = new ArrayList<Myconfession_pojo>();
 
         requestQueue = Volley.newRequestQueue(requireContext());
 
@@ -66,13 +66,12 @@ public class MyconfessionFragment extends Fragment {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                Confession_Pojo data = gson.fromJson(jsonObject.toString(), Confession_Pojo.class);
+                                Myconfession_pojo data = gson.fromJson(jsonObject.toString(), Myconfession_pojo.class);
 
                                 api_data.add(data);
                             }
 
-                            String type="Self";
-                            adapter = new MyAdapter(api_data,getContext(),type);
+                            adapter = new MyownAdapter(getContext(),api_data);
                             recyclerView.setAdapter(adapter);
 
 

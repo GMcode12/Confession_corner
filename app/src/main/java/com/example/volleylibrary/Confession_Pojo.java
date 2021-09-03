@@ -5,7 +5,8 @@ import java.util.List;
 public class Confession_Pojo {
 
     public int categoryId;
-    public List<Comment> comments;
+    public List<Comment> comments=null;
+    public List<Mycomments>mycomments=null;
     public String datetime;
     public int id;
     public String image;
@@ -13,16 +14,20 @@ public class Confession_Pojo {
     public String message;
     public String userename;
     int like =0 ;
-//    public List<Mycomments>myComment;
 
 
-    public Confession_Pojo(String message,String image,int likes,int like) {
 
-        this.message = message;
+    public Confession_Pojo(String image,int likes,int like) {
+
+
         this.image=image;
         this.likes=likes;
         this.like=like;
 
+    }
+
+    public List<Mycomments> getMycomments(){
+        return  mycomments;
     }
 
     public int getCategoryId() {

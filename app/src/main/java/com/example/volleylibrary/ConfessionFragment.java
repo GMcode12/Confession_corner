@@ -80,9 +80,7 @@ public class ConfessionFragment extends Fragment {
 
                                 api_data.add(data);
                             }
-
-                            String type ="All";
-                            adapter = new MyAdapter(api_data,getContext(),type);
+                            adapter = new MyAdapter(api_data,getContext());
                             recyclerView.setAdapter(adapter);
 
 

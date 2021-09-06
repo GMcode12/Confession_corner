@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -26,6 +27,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
@@ -143,6 +145,25 @@ public class MyownAdapter extends RecyclerView.Adapter<MyownAdapter.ViewHolder> 
 
         });
 
+        holder.send_commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                String message = holder.comment_message.getText().toString();
+                int id = pojo_obj.getId();
+                if (message.equals("")) {
+                    Toast.makeText(context, "Empty Message ", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    post_comment(id, message,position);
+                    holder.comment_message.setText("");
+                }
+
+            }
+
+        });
+
 
 
     }
@@ -164,6 +185,9 @@ public class MyownAdapter extends RecyclerView.Adapter<MyownAdapter.ViewHolder> 
         ImageButton likes_confession;
         ImageButton delete_confession;
 
+        TextView comment_message;
+        ImageButton send_commentButton;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -176,9 +200,65 @@ public class MyownAdapter extends RecyclerView.Adapter<MyownAdapter.ViewHolder> 
             comments_count=itemView.findViewById(R.id.mycomment_count);
             likes_confession=itemView.findViewById(R.id.myconfession_like);
 
+            comment_message=itemView.findViewById(R.id.comment_messageforownconfession);
+            send_commentButton=itemView.findViewById(R.id.send_commentButtonforownconfession);
+
         }
 
 
+    }
+
+    private void post_comment(int id, String message, int position) {
+
+
+        String url = "https://putatoetest-k3snqinenq-uc.a.run.app/v1/api/addToConfession";
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Toast.makeText(context, "Successfuy sent", Toast.LENGTH_LONG).show();
+                Log.d("Response is success ", response.toString());
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(context, "An error occurred ", Toast.LENGTH_LONG).show();
+
+                Log.d("comment error", "Service Error:" + error.toString());
+
+            }
+        }) {
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put("id", Integer.toString(id));
+                params.put("is_comment", "1");
+                params.put("message",message);
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+
+                params.put("authtoken", "VGSBP6L3FG80I6RKNIR8RN6LV42LJAHDV0UYOVVS69ISGLXB4T");
+                return params;
+
+
+            }
+
+        };
+        requestQueue.add(stringRequest);
     }
 
     public void delete_Viewbyposition(int pos)

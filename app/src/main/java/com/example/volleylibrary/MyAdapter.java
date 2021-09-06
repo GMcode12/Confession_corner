@@ -1,18 +1,14 @@
 package com.example.volleylibrary;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.Html;
-import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -29,8 +26,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +40,6 @@ import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -75,7 +76,21 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
         String image = pojo_obj.getImage();
-        Glide.with(context).load(image).into(holder.imageView);
+//        Glide.with(context).load(image).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(holder.imageView);
+
+
+        Glide.with(context).load(image)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        return false;
+                    }
+                }).into(holder.imageView);
 
 
         int likes_count = pojo_obj.getLikes();
@@ -114,16 +129,42 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             public void onClick(View v) {
 
                 int like_ID = pojo_obj.getId();
-                confession_like(like_ID);
+               confession_like(like_ID);
+
             }
+        });
+
+        holder.send_commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int count = pojo_obj.getComment_count();
+
+                String message = holder.comment_message.getText().toString();
+                int id = pojo_obj.getId();
+                if (message.equals("")) {
+                    Toast.makeText(context, "Empty Message ", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    post_comment(id, message,position);
+
+                    holder.comment_message.setText("");
+
+
+
+                }
+
+            }
+
         });
     }
 
-        @Override
+
+
+    @Override
         public int getItemCount () {
             return data.size();
-
-        }
+    }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -133,6 +174,9 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             ImageView imageView;
             TextView comments_count;
             ImageButton likes_confession;
+
+            TextView comment_message;
+            ImageButton send_commentButton;
 
 
             public ViewHolder(@NonNull View itemView) {
@@ -145,13 +189,72 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 comments_count = itemView.findViewById(R.id.comment_count);
                 likes_confession = itemView.findViewById(R.id.confession_like);
 
+                comment_message=itemView.findViewById(R.id.comment_message);
+                send_commentButton=itemView.findViewById(R.id.send_commentButton);
+
 
             }
 
 
         }
 
-    private void confession_like(int id){
+    private void post_comment(int id, String message, int position) {
+
+
+        String url = "https://putatoetest-k3snqinenq-uc.a.run.app/v1/api/addToConfession";
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Toast.makeText(context, "Successfuy sent", Toast.LENGTH_LONG).show();
+                Log.d("Response is success ", response.toString());
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(context, "An error occurred ", Toast.LENGTH_LONG).show();
+
+                Log.d("comment error", "Service Error:" + error.toString());
+
+            }
+        }) {
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put("id", Integer.toString(id));
+                params.put("is_comment", "1");
+                params.put("message",message);
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+
+                params.put("authtoken", "VGSBP6L3FG80I6RKNIR8RN6LV42LJAHDV0UYOVVS69ISGLXB4T");
+                return params;
+
+
+            }
+
+        };
+        requestQueue.add(stringRequest);
+    }
+
+
+
+    public void confession_like(int id){
+
 
 
         String url="https://putatoetest-k3snqinenq-uc.a.run.app/v1/api/likeConfession";
@@ -209,6 +312,9 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         requestQueue.add(jsonObjectRequest);
+
+
+
     }
 
 

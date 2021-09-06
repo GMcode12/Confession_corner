@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="220dp"
     android:layout_margin="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools">
@@ -22,6 +22,7 @@
 
 
             <LinearLayout
+                android:paddingTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="139dp"
                 android:orientation="horizontal">
@@ -51,9 +52,9 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:maxLines="1"
+                        android:maxLines="2"
+                        android:text="this is headline text this is headline text this is headline text this is headline text  "
                         android:textColor="#00838f"
-                        android:text="this_is_headline_part_which_is_bolt"
                         android:textSize="16sp"
                         android:textStyle="bold">
 
@@ -66,7 +67,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:ellipsize="end"
                         android:maxLines="3"
@@ -76,10 +76,11 @@
                     </TextView>
 
                     <LinearLayout
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
+                        android:paddingTop="5dp"
                         android:layout_marginLeft="15dp"
                         >
 
@@ -144,12 +145,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/myconfession_like"
+                    android:layout_marginTop="4dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="15dp"
@@ -159,30 +162,42 @@
                     android:src="@drawable/logo">
 
                 </ImageButton>
-
-
                 <TextView
-                    android:id="@+id/ID"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Like">
 
                 </TextView>
 
 
                 <EditText
-                    android:layout_width="match_parent"
+                    android:id="@+id/comment_messageforownconfession"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="7dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
                     android:background="#7DACDCE5"
-                    android:hint="leave_comment"
+                    android:hint="Leave  comment"
                     android:padding="5dp"
-                    android:paddingStart="10dp"
-                    android:paddingLeft="10dp">
+                    android:paddingStart="10dp">
 
                 </EditText>
+
+                <ImageButton
+                    android:id="@+id/send_commentButtonforownconfession"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="5dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sendicon">
+
+                </ImageButton>
 
 
             </LinearLayout>

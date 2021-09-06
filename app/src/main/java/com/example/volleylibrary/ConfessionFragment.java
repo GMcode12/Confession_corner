@@ -14,8 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -45,7 +43,7 @@ public class ConfessionFragment extends Fragment {
     ArrayList<Confession_Pojo> api_data;
     RequestQueue requestQueue;
     RecyclerView recyclerView;
-//   SwipeRefreshLayout swipeRefreshLayout;
+
 
 
 
@@ -61,7 +59,6 @@ public class ConfessionFragment extends Fragment {
 
         requestQueue = Volley.newRequestQueue(requireContext());
 
-//        swipeRefreshLayout=v.findViewById(R.id.swipe_refresh);
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null,
@@ -117,20 +114,6 @@ public class ConfessionFragment extends Fragment {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         requestQueue.add(jsonObjectRequest);
-
-
-
-
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//
-//                swipeRefreshLayout.setRefreshing(false);
-//
-//            }
-//
-//        });
-
 
         return v;
 

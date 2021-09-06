@@ -45,7 +45,6 @@ public class myCommentAdapter extends RecyclerView.Adapter<myCommentAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
         TextView mycomment;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

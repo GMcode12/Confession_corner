@@ -13,7 +13,7 @@ public class Confession_Pojo {
     public int likes =0;
     public String message;
     public String userename;
-    int like =0 ;
+
 
 
 
@@ -22,7 +22,7 @@ public class Confession_Pojo {
 
         this.image=image;
         this.likes=likes;
-        this.like=like;
+
 
     }
 
@@ -62,13 +62,13 @@ public class Confession_Pojo {
         return userename;
     }
 
-    public int getLike(){return like; }
 
 
     public  int getComment_count()
     {
         return comments.size();
     }
+
 
 //    public int get_myCommentCount() {
 //        return  myComment.size();

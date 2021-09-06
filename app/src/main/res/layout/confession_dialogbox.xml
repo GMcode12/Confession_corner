@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:hint="Confession TItle"
             android:textAlignment="textStart"
             android:padding="7dp"
@@ -34,35 +35,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="47dp">
 
             <Button
                 android:id="@+id/confessionImage_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:backgroundTint="#00838f"
                 android:text="select image"
 
-                >
-
-            </Button>
+                />
 
             <TextView
-                android:id="@+id/confessionImage_path"
-                android:layout_width="match_parent"
+                android:id="@+id/image_selectedStatus"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
+                android:text="Please Select Image"
                 android:background="#f1f3f6"
-                android:padding="9dp"
-                android:gravity="center_vertical"
-
-                android:text="No file Choosen">
+                android:padding="8dp"
+                android:textSize="15sp"
+                android:layout_marginStart="15dp">
 
             </TextView>
-
-
         </LinearLayout>
 
 

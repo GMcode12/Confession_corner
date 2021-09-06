@@ -29,7 +29,7 @@
                 <ImageView
                     android:id="@+id/imageview"
                     android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="130dp"
                     android:layout_weight="1"
                     android:padding="10dp"
 
@@ -51,9 +51,9 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:maxLines="1"
+                        android:maxLines="2"
+                        android:text="this is headline text this is headline text this is headline text this is headline text  "
                         android:textColor="#00838f"
-                        android:text="this_is_headline_part_which_is_bolt"
                         android:textSize="16sp"
                         android:textStyle="bold">
 
@@ -66,7 +66,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:ellipsize="end"
                         android:maxLines="3"
@@ -79,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
+                        android:paddingTop="5dp"
                         android:layout_marginLeft="15dp"
                         >
 
@@ -163,31 +162,38 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Like"
-                    android:padding="4dp">
+                    android:padding="4dp"
+                    android:text="Like">
 
                 </TextView>
-                <TextView
-                    android:id="@+id/ID"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
 
-                </TextView>
 
                 <EditText
-                    android:layout_width="match_parent"
+                    android:id="@+id/comment_message"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="7dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
                     android:background="#7DACDCE5"
-                    android:hint="leave_comment"
+                    android:hint="Leave  comment"
                     android:padding="5dp"
-                    android:paddingStart="10dp"
-                    android:paddingLeft="10dp">
+                    android:paddingStart="10dp">
 
                 </EditText>
+
+                <ImageButton
+                    android:id="@+id/send_commentButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="5dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sendicon">
+
+                </ImageButton>
 
 
             </LinearLayout>
